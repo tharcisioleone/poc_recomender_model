@@ -66,5 +66,5 @@ class ReadData(BaseETL):
         for key, df in self._dataframes.items():
             self._dataframes[key] = self.transform(df)
         self.load(None)
-        self.logger.info("Load complete")
+        self.logger.info("Load complete: new")
         return self._dataframes

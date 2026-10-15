@@ -28,3 +28,5 @@ reports/
 # Databricks
 .databricks/
 *.log
+
+.databricks
