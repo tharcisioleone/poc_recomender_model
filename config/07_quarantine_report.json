@@ -1,0 +1,30 @@
+{
+  "pipeline": "QuarantineReport",
+  "source_tables": {
+    "dq_report": "gold.dq_report"
+  },
+  "storage": {
+    "quarantine": {
+      "schema": "quarantine",
+      "tables": {
+        "books": "books_quarantine",
+        "users": "users_quarantine",
+        "ratings": "ratings_quarantine"
+      }
+    },
+    "mode": "overwrite"
+  },
+  "dq_config": "06_dq_checks.json",
+  "gold_cleanup": {
+    "tables": {
+      "book_ratings": "gold.book_ratings",
+      "books_summary": "gold.books_summary",
+      "authors_summary": "gold.authors_summary"
+    },
+    "join_keys": {
+      "books": ["isbn"],
+      "users": ["user_id"],
+      "ratings": ["user_id", "isbn"]
+    }
+  }
+}

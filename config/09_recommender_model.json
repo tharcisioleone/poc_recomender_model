@@ -1,0 +1,26 @@
+{
+  "pipeline": "RecommenderModel",
+  "source_tables": {
+    "book_ratings": "gold.book_ratings"
+  },
+  "storage": {
+    "schema": "gold",
+    "table": "recommendations"
+  },
+  "model": {
+    "algorithm": "ALS",
+    "params": {
+      "max_iter": 10,
+      "reg_param": 0.1,
+      "rank": 10,
+      "cold_start_strategy": "drop"
+    },
+    "train_test_split": 0.8,
+    "seed": 42,
+    "top_n_recommendations": 10
+  },
+  "mlflow": {
+    "experiment_name": "/Users/tharcisio.leone@x1f-fink.one/poc/book_recommender",
+    "run_name": "als_collaborative_filtering"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "pipeline": "ReadData",
+  "source": {
+    "separator": ",",
+    "encoding": "iso-8859-1",
+    "files": {
+      "books": "Books.csv",
+      "users": "Users.csv",
+      "ratings": "Ratings.csv"
+    }
+  },
+  "storage": {
+    "bronze": {
+      "schema": "bronze",
+      "tables": {
+        "books": "books_raw",
+        "users": "users_raw",
+        "ratings": "ratings_raw"
+      }
+    },
+    "mode": "overwrite"
+  }
+}

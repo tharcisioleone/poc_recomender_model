@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Data (large files)
+data/kaggle/*.csv
+data/kaggle/*.png
+
+# Reports (generated)
+reports/
+*.html
+
+# Environment
+.env
+.venv/
+
+# Databricks
+.databricks/
+*.log

@@ -1,0 +1,49 @@
+{
+  "pipeline": "DataTransformation",
+  "source_tables": {
+    "books": "bronze.books_raw",
+    "users": "bronze.users_raw",
+    "ratings": "bronze.ratings_raw"
+  },
+  "storage": {
+    "silver": {
+      "schema": "silver",
+      "tables": {
+        "books": "books",
+        "users": "users",
+        "ratings": "ratings"
+      }
+    },
+    "mode": "overwrite"
+  },
+  "data_quality": {
+    "min_year": 1900,
+    "max_year": 2025,
+    "min_age": 5,
+    "max_age": 120,
+    "min_rating": 0,
+    "max_rating": 10
+  },
+  "column_mapping": {
+    "books": {
+      "ISBN": "isbn",
+      "Book_Title": "title",
+      "Book_Author": "author",
+      "Year_Of_Publication": "year_of_publication",
+      "Publisher": "publisher",
+      "Image_URL_S": "image_url_s",
+      "Image_URL_M": "image_url_m",
+      "Image_URL_L": "image_url_l"
+    },
+    "users": {
+      "User_ID": "user_id",
+      "Location": "location",
+      "Age": "age"
+    },
+    "ratings": {
+      "User_ID": "user_id",
+      "ISBN": "isbn",
+      "Book_Rating": "book_rating"
+    }
+  }
+}

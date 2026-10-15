@@ -1,0 +1,23 @@
+{
+  "pipeline": "MLPerformance",
+  "source_tables": {
+    "book_ratings": "gold.book_ratings",
+    "recommendations": "gold.recommendations"
+  },
+  "model": {
+    "experiment_name": "/Users/tharcisio.leone@x1f-fink.one/poc/book_recommender"
+  },
+  "comparison": {
+    "models": [
+      {"run_name": "als_collaborative_filtering", "label": "Step 09: Single-Fit ALS"},
+      {"run_name": "als_hyperparameter_tuning", "label": "Step 10: CV-Tuned ALS"}
+    ]
+  },
+  "report": {
+    "output_file": "11_ml_performance_report.html",
+    "title": "Recommender System - Performance Report"
+  },
+  "charts": {
+    "template": "plotly_white"
+  }
+}

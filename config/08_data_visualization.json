@@ -1,0 +1,22 @@
+{
+  "pipeline": "DataVisualization",
+  "source_tables": {
+    "book_ratings": "gold.book_ratings",
+    "books_summary": "gold.books_summary",
+    "authors_summary": "gold.authors_summary"
+  },
+  "report": {
+    "output_file": "08_book_analysis_report.html",
+    "title": "Book Recommendation - Data Analysis Report"
+  },
+  "charts": {
+    "top_n": 10,
+    "min_ratings": 20,
+    "min_year_manual": 1990,
+    "max_year_manual": 2006,
+    "min_ratings_per_group": 10,
+    "title_max_chars": 30,
+    "color_scheme": "plotly",
+    "template": "plotly_white"
+  }
+}

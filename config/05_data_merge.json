@@ -1,0 +1,27 @@
+{
+  "pipeline": "DataMerge",
+  "source_tables": {
+    "books": "silver.books",
+    "users": "silver.users",
+    "ratings": "silver.ratings"
+  },
+  "storage": {
+    "schema": "gold",
+    "table": "book_ratings",
+    "mode": "overwrite"
+  },
+  "join_keys": {
+    "ratings_books": ["isbn"],
+    "ratings_users": ["user_id"]
+  },
+  "aggregations": {
+    "books_summary": {
+      "schema": "gold",
+      "table": "books_summary"
+    },
+    "authors_summary": {
+      "schema": "gold",
+      "table": "authors_summary"
+    }
+  }
+}

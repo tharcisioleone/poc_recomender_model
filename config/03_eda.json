@@ -1,0 +1,13 @@
+{
+  "pipeline": "EDA",
+  "source_tables": {
+    "books": "bronze.books_raw",
+    "users": "bronze.users_raw",
+    "ratings": "bronze.ratings_raw"
+  },
+  "profiling": {
+    "minimal": true,
+    "samples_head": 10,
+    "report_prefix": "03"
+  }
+}

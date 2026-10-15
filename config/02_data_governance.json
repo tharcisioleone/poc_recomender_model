@@ -1,0 +1,52 @@
+{
+  "pipeline": "DataGovernance",
+  "source_tables": {
+    "books": "bronze.books_raw",
+    "users": "bronze.users_raw",
+    "ratings": "bronze.ratings_raw"
+  },
+  "table_comments": {
+    "bronze.books_raw": "Raw book metadata from Kaggle Book-Crossing dataset. Contains ISBN, title, author, year, publisher and cover image URLs.",
+    "bronze.users_raw": "Raw user profiles from Kaggle Book-Crossing dataset. Contains user ID, location and age.",
+    "bronze.ratings_raw": "Raw book ratings from Kaggle Book-Crossing dataset. Ratings 1-10 (explicit) or 0 (implicit)."
+  },
+  "column_comments": {
+    "bronze.books_raw": {
+      "ISBN": "International Standard Book Number - unique book identifier",
+      "Book_Title": "Title of the book",
+      "Book_Author": "Author of the book",
+      "Year_Of_Publication": "Year the book was published",
+      "Publisher": "Publishing house",
+      "Image_URL_S": "Small cover image URL",
+      "Image_URL_M": "Medium cover image URL",
+      "Image_URL_L": "Large cover image URL",
+      "_source_file": "Original CSV filename",
+      "_ingestion_timestamp": "UTC timestamp of bronze ingestion"
+    },
+    "bronze.users_raw": {
+      "User_ID": "Unique user identifier (anonymized)",
+      "Location": "User location (city, state, country)",
+      "Age": "User age - may contain NULL or outlier values",
+      "_source_file": "Original CSV filename",
+      "_ingestion_timestamp": "UTC timestamp of bronze ingestion"
+    },
+    "bronze.ratings_raw": {
+      "User_ID": "Foreign key to users table",
+      "ISBN": "Foreign key to books table",
+      "Book_Rating": "Rating 0-10. 0=implicit (interaction only), 1-10=explicit rating",
+      "_source_file": "Original CSV filename",
+      "_ingestion_timestamp": "UTC timestamp of bronze ingestion"
+    }
+  },
+  "tags": {
+    "bronze.books_raw": {"domain": "books", "layer": "bronze", "pii": "false"},
+    "bronze.users_raw": {"domain": "books", "layer": "bronze", "pii": "true"},
+    "bronze.ratings_raw": {"domain": "books", "layer": "bronze", "pii": "false"}
+  },
+  "column_masking": {
+    "bronze.users_raw": ["Age", "Location"]
+  },
+  "row_filter": {
+    "bronze.ratings_raw": "Book_Rating > 0"
+  }
+}

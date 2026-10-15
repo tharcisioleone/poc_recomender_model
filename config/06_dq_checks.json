@@ -1,0 +1,33 @@
+{
+  "pipeline": "DQChecks",
+  "source_tables": {
+    "books": "silver.books",
+    "users": "silver.users",
+    "ratings": "silver.ratings"
+  },
+  "storage": {
+    "schema": "gold",
+    "table": "dq_report"
+  },
+  "checks": {
+    "books": [
+      {"name": "isbn_not_null", "column": "isbn", "rule": "not_null"},
+      {"name": "title_not_null", "column": "title", "rule": "not_null"},
+      {"name": "author_not_null", "column": "author", "rule": "not_null"},
+      {"name": "year_valid_range", "column": "year_of_publication", "rule": "between", "min": 1900, "max": 2025},
+      {"name": "isbn_unique", "column": "isbn", "rule": "unique"}
+    ],
+    "users": [
+      {"name": "user_id_not_null", "column": "user_id", "rule": "not_null"},
+      {"name": "age_valid_range", "column": "age", "rule": "between", "min": 5, "max": 120},
+      {"name": "user_id_unique", "column": "user_id", "rule": "unique"}
+    ],
+    "ratings": [
+      {"name": "user_id_not_null", "column": "user_id", "rule": "not_null"},
+      {"name": "isbn_not_null", "column": "isbn", "rule": "not_null"},
+      {"name": "rating_valid_range", "column": "book_rating", "rule": "between", "min": 0, "max": 10},
+      {"name": "isbn_referential", "column": "isbn", "rule": "referential_integrity", "reference_table": "silver.books", "reference_column": "isbn"},
+      {"name": "user_referential", "column": "user_id", "rule": "referential_integrity", "reference_table": "silver.users", "reference_column": "user_id"}
+    ]
+  }
+}
