@@ -11,14 +11,14 @@
     "plotly",
     "kaleido==0.2.1"
   ],
-  "data_path": "/Workspace/Users/tharcisio.leone@x1f-fink.one/poc/data/kaggle",
+  "data_path": "/Workspace/Users/tharcisio.leone@x1f-fink.one/poc_recomender_model/data/kaggle",
   "expected_files": [
     "Books.csv",
     "Users.csv",
     "Ratings.csv"
   ],
-  "reports_path": "/Workspace/Users/tharcisio.leone@x1f-fink.one/poc/reports",
-  "project_path": "/Workspace/Users/tharcisio.leone@x1f-fink.one/poc",
+  "reports_path": "/Workspace/Users/tharcisio.leone@x1f-fink.one/poc_recomender_model/reports",
+  "project_path": "/Workspace/Users/tharcisio.leone@x1f-fink.one/poc_recomender_model",
   "dashboard_id": "01f1c70a875f1f258421bb4ccf234903",
   "workspace_url": "https://adb-7405609268959791.11.azuredatabricks.net"
 }

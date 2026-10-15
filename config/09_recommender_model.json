@@ -20,7 +20,7 @@
     "top_n_recommendations": 10
   },
   "mlflow": {
-    "experiment_name": "/Users/tharcisio.leone@x1f-fink.one/poc/book_recommender",
+    "experiment_name": "/Users/tharcisio.leone@x1f-fink.one/poc_recomender_model/book_recommender",
     "run_name": "als_collaborative_filtering"
   }
 }

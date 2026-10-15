@@ -5,7 +5,7 @@
     "recommendations": "gold.recommendations"
   },
   "model": {
-    "experiment_name": "/Users/tharcisio.leone@x1f-fink.one/poc/book_recommender"
+    "experiment_name": "/Users/tharcisio.leone@x1f-fink.one/poc_recomender_model/book_recommender"
   },
   "comparison": {
     "models": [
