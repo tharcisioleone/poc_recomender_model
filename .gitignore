@@ -28,5 +28,7 @@ reports/
 # Databricks
 .databricks/
 *.log
-
 .databricks
+
+# Unsupported assets in git folders
+book_recommender
