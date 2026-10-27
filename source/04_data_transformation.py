@@ -42,7 +42,7 @@ class DataTransformation(BaseETL):
     def _transform_users(self, df: DataFrame) -> DataFrame:
         df = self._rename_columns(df, self.col_mapping.get("users", {}))
         df = df.withColumn("user_id", F.expr("try_cast(user_id AS int)"))
-        df = df.withColumn("age", F.expr("try_cast(age AS int)"))
+        df = df.withColumn("age", F.expr("try_cast(try_cast(age AS double) AS int)"))
         df = df.withColumn(
             "age",
             F.when(
