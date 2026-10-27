@@ -13,10 +13,6 @@ build/
 *.swp
 *.swo
 
-# Data (large files)
-data/kaggle/*.csv
-data/kaggle/*.png
-
 # Reports (generated)
 reports/
 *.html
