@@ -13,10 +13,6 @@ build/
 *.swp
 *.swo
 
-# Reports (generated)
-reports/
-*.html
-
 # Environment
 .env
 .venv/
