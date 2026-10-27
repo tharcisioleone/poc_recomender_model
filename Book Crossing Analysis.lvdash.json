@@ -11,7 +11,7 @@
         "FROM\n",
         "  gold.books_summary\n",
         "WHERE\n",
-        "  rating_count >= 20\n",
+        "  rating_count >= 30\n",
         "ORDER BY\n",
         "  rating_count DESC\n",
         "LIMIT 10"
