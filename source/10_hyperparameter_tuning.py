@@ -19,6 +19,16 @@ class HyperparameterTuning(BaseMLPipeline):
         self._books_df = None
         self._best_params: dict = {}
         self._cv_results: list = []
+        scale = self.model_cfg.get("rating_scale", {})
+        self._rating_min = float(scale.get("min", 1))
+        self._rating_max = float(scale.get("max", 10))
+
+    def _clip_rating(self, col: str):
+        """Clip ALS scores to the valid rating scale."""
+        return F.least(
+            F.greatest(F.col(col), F.lit(self._rating_min)),
+            F.lit(self._rating_max),
+        )
 
     def extract(self) -> DataFrame:
         book_ratings = self.spark.table(self._source_table("book_ratings"))
@@ -142,7 +152,9 @@ class HyperparameterTuning(BaseMLPipeline):
     def evaluate(self, model, test_df: DataFrame) -> dict:
         import mlflow
 
-        predictions = model.transform(test_df)
+        predictions = model.transform(test_df).withColumn(
+            "prediction", self._clip_rating("prediction")
+        )
         evaluator_rmse = RegressionEvaluator(
             metricName="rmse", labelCol="book_rating",
             predictionCol="prediction",
@@ -195,7 +207,8 @@ class HyperparameterTuning(BaseMLPipeline):
         )
         return recs_final.select(
             "user_id", "isbn", "title", "author",
-            F.round("predicted_rating", 2).alias("predicted_rating"),
+            F.round(self._clip_rating("predicted_rating"), 2)
+            .cast("float").alias("predicted_rating"),
         )
 
     def run(self) -> dict:
